@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "TC-001",
+    "category": "billing",
+    "input": "I was charged twice for my order.",
+    "expected_intent": "billing",
+    "requires_human": false
+  },
+  {
+    "id": "TC-002",
+    "category": "escalation",
+    "input": "I have contacted you three times and I am going to report this.",
+    "expected_intent": "general_information",
+    "requires_human": true
+  },
+  {
+    "id": "TC-003",
+    "category": "payment",
+    "input": "My payment went through but my account still says unpaid.",
+    "expected_intent": "payment",
+    "requires_human": false
+  }
+]
