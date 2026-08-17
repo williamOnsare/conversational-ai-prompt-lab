@@ -1,2 +1,2 @@
 # conversational-ai-prompt-lab
-Practical prompt engineering, conversational AI workflows, evaluation and guardrail patterns.
+A practical prompt-engineering lab exploring structured LLM prompts, conversational workflows, evaluation, guardrails and AI-assisted automation.
