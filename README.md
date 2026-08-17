@@ -52,6 +52,24 @@ Small utilities for evaluating or comparing prompt behaviour.
 ### `docs/`
 Architecture and design notes.
 
+## Featured Experiments
+
+### 1. Intent Classification
+Structured classification with JSON output and human escalation.
+
+→ [View prompt](prompts/classification/support-intent.md)
+
+### 2. Conversational Response Generation
+Context-aware response generation with guardrails.
+
+→ [View prompt](prompts/response-generation/support-response.md)
+
+### 3. Prompt Evaluation
+Synthetic test cases and prompt-version comparison.
+
+→ [View evaluation](evaluations/prompt-comparison.md)
+
+
 ## Engineering Principles
 
 I generally optimise for:
