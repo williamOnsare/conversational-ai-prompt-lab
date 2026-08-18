@@ -284,13 +284,17 @@ conversational-ai-prompt-lab/
 │       └── support-response.md
 │
 ├── evaluations/
+│   ├── test-cases.json
 │   └── prompt-comparison.md
 │
 ├── examples/
-│   └── ...
+│   ├── few-shot-classification.md
+│   ├── structured-output.md
+│   └── guardrails-and-fallbacks.md
 │
 └── scripts/
-    └── ...
+    ├── evaluate-prompts.js
+    └── README.md
 ```
 
 ### `prompts/`
