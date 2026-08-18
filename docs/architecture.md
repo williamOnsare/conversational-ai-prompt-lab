@@ -1,73 +1,89 @@
-# Conversational AI Architecture
+# Conversational AI Prompt Lab — Architecture
 
-## Overview
+## 1. Purpose
 
-This document describes the architecture of the conversational AI patterns
-demonstrated in this repository.
+The Conversational AI Prompt Lab is a small, public portfolio project demonstrating practical prompt-engineering and conversational-AI development skills.
 
-The repository is a public portfolio project containing synthetic and
-reconstructed examples inspired by real-world experience integrating
-LLM capabilities into customer-support workflows.
+The lab focuses on designing, structuring, testing, evaluating, and iterating on prompts for realistic customer-service and conversational workflows.
 
-It is **not** a representation of any proprietary production system.
+The goal is not to present a production contact-centre platform. Instead, the repository demonstrates the engineering thinking behind production conversational AI systems:
 
-The architecture demonstrates how an LLM can be integrated into a broader
-application while maintaining:
+- Clear system and role instructions
+- Structured conversational flows
+- Few-shot examples
+- Output constraints
+- Guardrails and fallback behaviour
+- Edge-case handling
+- Prompt versioning
+- Repeatable evaluation
+- A/B comparison of prompt variants
+- Measurement-driven iteration
+- Separation between prompt logic and evaluation data
 
-- predictable behaviour
-- structured outputs
-- clear business rules
-- human oversight
-- measurable evaluation
-- safe failure behaviour
-- cost and latency awareness
-- versioned prompt management
-
----
-
-# 1. Architectural Goals
-
-The system is designed around several principles.
-
-### 1.1 AI should be one component, not the whole application
-
-Business-critical decisions should not depend entirely on a free-form model
-response.
-
-The application should control:
-
-- authentication
-- business rules
-- permissions
-- workflow state
-- API calls
-- persistence
-- validation
-- escalation
-
-The LLM should perform tasks where language understanding or generation
-provides a meaningful advantage.
+The architecture is intentionally lightweight so that the project remains easy to review, reproduce, and extend.
 
 ---
 
-### 1.2 Separate deterministic logic from probabilistic logic
+## 2. High-Level Architecture
 
-Deterministic application logic should remain outside the model whenever
-possible.
-
-For example:
+The lab follows a simple evaluation loop:
 
 ```text
-Application Logic
-    ├── user authentication
-    ├── permissions
-    ├── transaction state
-    ├── available actions
-    ├── escalation policy
-    └── business rules
-
-LLM Responsibilities
-    ├── intent classification
-    ├── language understanding
-    ├── response drafting
-    └── conversational transformation
+                    ┌──────────────────────┐
+                    │   Conversation       │
+                    │   Use Case / Goal    │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │   Prompt Definition  │
+                    │                      │
+                    │ System instructions  │
+                    │ Rules / constraints  │
+                    │ Few-shot examples    │
+                    │ Fallback behaviour   │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │      LLM / Model     │
+                    │                      │
+                    │ OpenAI / Gemini /    │
+                    │ compatible provider  │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │     Model Output     │
+                    │                      │
+                    │ Response / decision  │
+                    │ Structured output    │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │     Evaluation       │
+                    │                      │
+                    │ Accuracy             │
+                    │ Policy adherence     │
+                    │ Tone                 │
+                    │ Format compliance    │
+                    │ Edge-case handling   │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Results & Analysis   │
+                    │                      │
+                    │ Baseline vs variant  │
+                    │ Failure analysis     │
+                    │ Recommendations      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Prompt Iteration     │
+                    │                      │
+                    │ Improve → Test →     │
+                    │ Evaluate → Repeat    │
+                    └──────────────────────┘
