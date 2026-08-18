@@ -2,22 +2,36 @@
   {
     "id": "TC-001",
     "category": "billing",
-    "input": "I was charged twice for my order.",
-    "expected_intent": "billing",
-    "requires_human": false
+    "input": "I was charged twice for the same transaction.",
+    "expected_intent": "billing_issue",
+    "should_escalate": false
   },
   {
     "id": "TC-002",
-    "category": "escalation",
-    "input": "I have contacted you three times and I am going to report this.",
-    "expected_intent": "general_information",
-    "requires_human": true
+    "category": "account",
+    "input": "I cannot log into my account because I forgot my password.",
+    "expected_intent": "account_access",
+    "should_escalate": false
   },
   {
     "id": "TC-003",
-    "category": "payment",
-    "input": "My payment went through but my account still says unpaid.",
-    "expected_intent": "payment",
-    "requires_human": false
+    "category": "human_support",
+    "input": "Please connect me to a human agent.",
+    "expected_intent": "human_support",
+    "should_escalate": true
+  },
+  {
+    "id": "TC-004",
+    "category": "ambiguous",
+    "input": "Something is wrong with my account.",
+    "expected_intent": "unknown",
+    "should_escalate": true
+  },
+  {
+    "id": "TC-005",
+    "category": "unsupported",
+    "input": "Can you tell me tomorrow's lottery numbers?",
+    "expected_intent": "unsupported_request",
+    "should_escalate": false
   }
 ]
