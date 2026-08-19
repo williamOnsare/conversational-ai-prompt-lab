@@ -21,6 +21,7 @@ A structured response makes the model's output easier to validate and route.
 
 Structured outputs can support downstream application logic such as:
 
+```text
 LLM
  ↓
 Validate output
@@ -32,6 +33,7 @@ Determine confidence
 Route workflow
  ├── Automated response
  └── Human escalation
+ ```
 
 
 ## Important Consideration
